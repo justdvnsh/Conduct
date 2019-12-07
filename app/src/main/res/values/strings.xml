@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">Conductor</string>
+    <string name="title_home">Home</string>
+    <string name="title_transfered_files">Files Transfered</string>
+    <string name="title_settings">Settings</string>
+
+    <!-- Settings Fargment -->
+    <string name="set_your_language">Set Your Language</string>
+    <string name="language">Language</string>
+    <string name="language_preference">language_preference</string>
+    <string name="language_english">English</string>
+    <string name="language_hindi">Hindi</string>
+    <string name="language_english_value" translatable="false">en</string>
+    <string name="language_hindi_value" translatable="false">hi</string>
+    <string-array name="Language">
+        <item>@string/language_english</item>
+        <item>@string/language_hindi</item>
+    </string-array>
+    <string-array name="language_values">
+        <item>@string/language_english_value</item>
+        <item>@string/language_hindi_value</item>
+    </string-array>
+    <string name="turn_wifi_on_off">Turn Wifi On/Off</string>
+    <string name="wifi_key">wifi_key</string>
+    <string name="wifi_summary">Turns wifi on/off</string>
+    <string name="wifi_summary_on">Wifi is On. Click to turn the wifi off</string>
+    <string name="wifi_summary_off">Wifi is Off. Click to turn the wifi on</string>
+    <string name="discover_peers_detail">Find Peers to Connect</string>
+    <string name="discover_peers">Find Peers</string>
+    <string name="discover_peers_key">discover_peers</string>
+    <string name="discover_summary">Check to find people to connect to</string>
+    <string name="discover_summary_on">Finding People</string>
+    <string name="discover_summary_off">Click to start finding people</string>
+</resources>
