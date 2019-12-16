@@ -2,9 +2,11 @@ package com.example.conductor;
 
 import android.app.Activity;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
+import java.io.DataInputStream;
 import java.io.IOException;
 import java.net.Inet4Address;
 import java.net.InetAddress;
@@ -79,6 +81,8 @@ public class ServerSocketThread extends Thread {
             while (true) {
 
                 socket = serverSocket.accept();
+                DataInputStream in = new DataInputStream(socket.getInputStream());
+                final String msg = in.readUTF();
 
 //                if (type == "files") {
 //                    FileThreadServer fileThread = new FileThreadServer(socket);
@@ -88,6 +92,14 @@ public class ServerSocketThread extends Thread {
 //                    ChatThread chatThread = new ChatThread(socket);
 //                    chatThread.start();
 //                }
+                final Socket finalSocket = socket;
+                activity.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(activity.getBaseContext(), "Connection Accepted" + finalSocket.getRemoteSocketAddress(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(activity.getBaseContext(), msg, Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         } catch (IOException e) {
             e.printStackTrace();

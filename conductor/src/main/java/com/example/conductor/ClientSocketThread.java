@@ -6,6 +6,7 @@ import android.widget.Toast;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
+import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -44,6 +45,9 @@ public class ClientSocketThread extends Thread {
 
         try {
             socket = new Socket(ip, port);
+            OutputStream out = socket.getOutputStream();
+            DataOutputStream outputStream = new DataOutputStream(out);
+            outputStream.writeUTF("Hello from " + socket.getLocalSocketAddress());
 
 //            byte[] bytes = new byte[1024];
 //            InputStream is = socket.getInputStream();
