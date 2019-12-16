@@ -16,7 +16,9 @@ import android.net.wifi.p2p.WifiP2pManager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -28,6 +30,18 @@ import java.util.List;
 public class MainActivity extends BaseActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
 
     SharedPreferences sharedPreferences;
+    Button btnSend;
+    Button btnReceive;
+
+    public void senderActivity(View v) {
+        Intent intent = new Intent(this, SenderActivity.class);
+        startActivity(intent);
+    }
+
+    public void receiverActivity(View v) {
+        Intent intent = new Intent(this, ReceiverActivity.class);
+        startActivity(intent);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +50,9 @@ public class MainActivity extends BaseActivity implements SharedPreferences.OnSh
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         sharedPreferences.registerOnSharedPreferenceChangeListener(this);
+
+        btnSend = (Button) findViewById(R.id.btn_send);
+        btnReceive = (Button) findViewById(R.id.btn_receive);
     };
 
     @Override

@@ -5,20 +5,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".SenderActivity">
 
-    <Button
-        android:id="@+id/btn_send"
+    <EditText
+        android:id="@+id/ip_address"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:text="send"
-        android:onClick="senderActivity" />
+        />
+
+    <TextView
+        android:id="@+id/server_port"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
 
     <Button
-        android:id="@+id/btn_receive"
-        android:layout_height="wrap_content"
+        android:id="@+id/connect"
         android:layout_width="match_parent"
-        android:text="receive"
-        android:onClick="receiverActivity" />
+        android:layout_height="wrap_content"
+        />
 
 </LinearLayout>
