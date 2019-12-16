@@ -1,2 +1,2 @@
-include ':app'
+include ':app', ':conductor'
 rootProject.name='Conduct'

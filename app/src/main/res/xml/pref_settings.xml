@@ -13,26 +13,4 @@
             android:icon="@drawable/ic_language_black_24dp"
             />
     </PreferenceCategory>
-    <PreferenceCategory
-        android:title="@string/discover_peers_detail"
-        >
-        <SwitchPreference
-            android:title="@string/turn_wifi_on_off"
-            android:key="@string/wifi_key"
-            android:icon="@drawable/ic_wifi_black_24dp"
-            android:defaultValue="false"
-            android:summary="@string/wifi_summary"
-            android:summaryOn="@string/wifi_summary_on"
-            android:summaryOff="@string/wifi_summary_off"
-            />
-        <CheckBoxPreference
-            android:title="@string/discover_peers"
-            android:key="@string/discover_peers_key"
-            android:icon="@drawable/ic_find_in_page_black_24dp"
-            android:defaultValue="false"
-            android:summary="@string/discover_summary"
-            android:summaryOff="@string/discover_summary_off"
-            android:summaryOn="@string/discover_summary_on"
-            />
-    </PreferenceCategory>
 </PreferenceScreen>
