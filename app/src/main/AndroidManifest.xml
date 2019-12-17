@@ -17,7 +17,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ReceiverActivity"></activity>
+        <activity android:name=".SenderDetail"></activity>
+        <activity android:name=".ReceiverDetail" />
+        <activity android:name=".ReceiverActivity" />
         <activity android:name=".SenderActivity" />
         <activity
             android:name=".SettingsActivity"

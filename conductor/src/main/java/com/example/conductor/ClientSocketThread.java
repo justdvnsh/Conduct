@@ -1,6 +1,7 @@
 package com.example.conductor;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Environment;
 import android.widget.Toast;
 
@@ -18,30 +19,41 @@ import java.net.Socket;
 
 public class ClientSocketThread extends Thread {
 
+    private static Socket socket = null;
+
     private Activity activity;
     private String ip;
     private int port;
     private String type;
     private File file;
+    private Class<? extends Activity> resultActivity;
 
-    public ClientSocketThread(Activity activity, String ip, int port, String type) {
+    public ClientSocketThread(Activity activity, String ip, int port, String type, Class<? extends Activity> resultActivity) {
         this.activity = activity;
         this.ip = ip;
         this.port = port;
         this.type = type.toLowerCase().trim();
+        this.resultActivity = resultActivity;
     }
 
-    public ClientSocketThread(Activity activity, String ip, int port, String type, File file) {
-        this.activity = activity;
-        this.ip = ip;
-        this.port = port;
-        this.type = type.toLowerCase().trim();
-        this.file = file;
+//    public ClientSocketThread(Activity activity, String ip, int port, String type, File file) {
+//        this.activity = activity;
+//        this.ip = ip;
+//        this.port = port;
+//        this.type = type.toLowerCase().trim();
+//        this.file = file;
+//    }
+
+    public static synchronized Socket getSocket() {
+        return socket;
+    }
+
+    public static synchronized void setSocket(Socket socket) {
+        ClientSocketThread.socket = socket;
     }
 
     @Override
     public void run() {
-        Socket socket = null;
 
         try {
             socket = new Socket(ip, port);
@@ -62,6 +74,8 @@ public class ClientSocketThread extends Thread {
                 @Override
                 public void run() {
                     Toast.makeText(activity.getBaseContext(), "Finished", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(activity.getBaseContext(), resultActivity.getClass());
+                    activity.startActivity(intent);
                 }
             });
         } catch (IOException e) {

@@ -2,6 +2,7 @@ package com.example.conduct;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -25,7 +26,7 @@ public class ReceiverActivity extends BaseActivity {
 
         serverIp.setText(ServerSocketThread.getIpAddress());
 
-        ServerSocketThread serverSocketThread = new ServerSocketThread(this, 8080, "file", serverPort);
+        ServerSocketThread serverSocketThread = new ServerSocketThread(this, 8080, "file", serverPort, ReceiverDetail.class);
         serverSocketThread.start();
     }
 }
