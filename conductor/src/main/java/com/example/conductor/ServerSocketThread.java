@@ -110,8 +110,9 @@ public class ServerSocketThread extends Thread {
                         Toast.makeText(activity.getBaseContext(), "Connection Accepted" + finalSocket.getRemoteSocketAddress(), Toast.LENGTH_SHORT).show();
                         Toast.makeText(activity.getBaseContext(), msg, Toast.LENGTH_SHORT).show();
 
-                        Intent intent = new Intent(activity.getBaseContext(), resultActivity.getClass());
+                        Intent intent = new Intent(activity.getBaseContext(), resultActivity);
                         activity.startActivity(intent);
+                        
                     }
                 });
             }

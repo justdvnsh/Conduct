@@ -29,7 +29,7 @@ public class SenderActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 String ip = ipAddress.getText().toString();
-                ClientSocketThread clientSocketThread = new ClientSocketThread(SenderActivity.this, ip, 8080, "file");
+                ClientSocketThread clientSocketThread = new ClientSocketThread(SenderActivity.this, ip, 8080, "file", SenderDetail.class);
                 clientSocketThread.start();
             }
         });

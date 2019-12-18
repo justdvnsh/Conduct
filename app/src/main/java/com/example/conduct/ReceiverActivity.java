@@ -25,6 +25,7 @@ public class ReceiverActivity extends BaseActivity {
         connectionStatus = (TextView) findViewById(R.id.server_connection_status);
 
         serverIp.setText(ServerSocketThread.getIpAddress());
+        serverPort.setText("8080");
 
         ServerSocketThread serverSocketThread = new ServerSocketThread(this, 8080, "file", serverPort, ReceiverDetail.class);
         serverSocketThread.start();

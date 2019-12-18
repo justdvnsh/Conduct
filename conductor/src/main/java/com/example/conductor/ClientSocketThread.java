@@ -74,7 +74,7 @@ public class ClientSocketThread extends Thread {
                 @Override
                 public void run() {
                     Toast.makeText(activity.getBaseContext(), "Finished", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(activity.getBaseContext(), resultActivity.getClass());
+                    Intent intent = new Intent(activity.getBaseContext(), resultActivity);
                     activity.startActivity(intent);
                 }
             });
