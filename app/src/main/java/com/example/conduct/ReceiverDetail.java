@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import java.io.DataInputStream;
+import java.io.IOException;
 import java.net.Socket;
 
 import static com.example.conductor.ServerSocketThread.getSocket;
@@ -23,6 +25,5 @@ public class ReceiverDetail extends BaseActivity {
         // server socket.
         socket = getSocket();
         receiverPortDetail.setText("Connected to " + socket.getRemoteSocketAddress().toString());
-
     }
 }

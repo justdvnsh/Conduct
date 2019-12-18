@@ -14,7 +14,10 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.DataOutputStream;
 import java.io.File;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.net.Socket;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -55,8 +58,8 @@ public class SenderDetail extends BaseActivity {
                     // get the uri of the file
                     Uri uri = data.getData();
                     String path = getPath(getBaseContext(), uri);
-//                    file = new File(path);
-                    Toast.makeText(this, path, Toast.LENGTH_SHORT).show();
+                    file = new File(path);
+//                    Toast.makeText(this, file.getName(), Toast.LENGTH_SHORT).show();
                 }
 
                 break;
@@ -66,27 +69,21 @@ public class SenderDetail extends BaseActivity {
     }
 
     private static String getPath(Context context, Uri uri) {
-        String result = null;
-        if ("content".equalsIgnoreCase(uri.getScheme())) {
-            String[] projection = {"_data", MediaStore.Images.Media.DATA};
-            Cursor cursor = null;
+        String path = null;
+        String[] projection = { MediaStore.Files.FileColumns.DATA };
+        Cursor cursor = context.getContentResolver().query(uri, projection, null, null, null);
 
-            try {
-                cursor = context.getContentResolver().query(uri, projection, null, null, null);
-                int col = cursor.getColumnIndexOrThrow("_data");
-                if (cursor.moveToFirst()) {
-                    result =  cursor.getString(col);
-                }
-                cursor.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-                cursor.close();
-            }
-        } else if ("file".equalsIgnoreCase(uri.getScheme())) {
-            result = uri.getPath();
+        if(cursor == null){
+            path = uri.getPath();
+        }
+        else{
+            cursor.moveToFirst();
+            int column_index = cursor.getColumnIndexOrThrow(projection[0]);
+            path = cursor.getString(column_index);
+            cursor.close();
         }
 
-        return result;
+        return ((path == null || path.isEmpty()) ? (uri.getPath()) : path);
     };
 
     @Override
