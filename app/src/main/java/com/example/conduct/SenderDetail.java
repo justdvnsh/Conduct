@@ -59,7 +59,7 @@ public class SenderDetail extends BaseActivity {
                     Uri uri = data.getData();
                     String path = getPath(getBaseContext(), uri);
                     file = new File(path);
-//                    Toast.makeText(this, file.getName(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, file.getAbsolutePath() + " File Name -> " + file.getName(), Toast.LENGTH_SHORT).show();
                 }
 
                 break;
