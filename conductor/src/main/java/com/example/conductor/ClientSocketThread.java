@@ -57,8 +57,9 @@ public class ClientSocketThread extends Thread {
 
         try {
             socket = new Socket(ip, port);
-            OutputStream out = socket.getOutputStream();
-            DataOutputStream outputStream = new DataOutputStream(out);
+//            OutputStream out = socket.getOutputStream();
+//            DataOutputStream outputStream = new DataOutputStream(out);
+            DataOutputStream outputStream = utils.sendDataToConnectedDevice(socket);
             outputStream.writeUTF("Hello from " + socket.getLocalSocketAddress());
 
 //            byte[] bytes = new byte[1024];

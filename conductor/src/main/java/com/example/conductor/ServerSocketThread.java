@@ -92,8 +92,8 @@ public class ServerSocketThread extends Thread {
                 });
 
                 socket = serverSocket.accept();
-                DataInputStream in = new DataInputStream(socket.getInputStream());
-                final String msg = in.readUTF();
+//                DataInputStream in = new DataInputStream(socket.getInputStream());
+                final String msg = utils.receiveDataFromConnectedDevice(socket);
 
 //                if (type == "files") {
 //                    FileThreadServer fileThread = new FileThreadServer(socket);
